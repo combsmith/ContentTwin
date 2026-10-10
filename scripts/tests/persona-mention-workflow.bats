@@ -13,17 +13,14 @@ setup() {
   fi
 }
 
-@test "trigger: on: surface includes comment events and reviewer assignment" {
+@test "trigger: on: surface includes comment events" {
   run python3 -c "
 import sys, yaml
 wf = yaml.safe_load(open(sys.argv[1])) or {}
 on = wf.get('on') or wf.get(True) or {}
-assert set(on) == {'issue_comment', 'pull_request_review_comment', 'discussion_comment', 'pull_request'}, sorted(on)
+assert set(on) == {'issue_comment', 'pull_request_review_comment', 'discussion_comment'}, sorted(on)
 for k, v in on.items():
-    if k == 'pull_request':
-        assert v == {'types': ['review_requested']}, (k, v)
-    else:
-        assert v == {'types': ['created']}, (k, v)
+    assert v == {'types': ['created']}, (k, v)
 print('ok')
 " "$WORKFLOW"
   [ "$status" -eq 0 ]

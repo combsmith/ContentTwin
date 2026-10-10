@@ -46,9 +46,6 @@ on:
   # repository_dispatch, which is exactly the bridge the manifest declares.
   discussion_comment:
     types: [created]
-  # Reviewer assignment: notify personas when reviews are requested on a PR.
-  pull_request:
-    types: [review_requested]
 
 permissions: {}
 
