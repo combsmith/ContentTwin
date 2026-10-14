@@ -12,7 +12,7 @@ If you discover a security vulnerability in this project, please report it respo
 
 **Please do NOT open a public GitHub issue for security vulnerabilities.**
 
-Instead, please send an email to **security@petry-projects.dev** with:
+Instead, please report it through [GitHub's private vulnerability reporting](https://github.com/combsmith/ContentTwin/security/advisories/new) with:
 
 1. A description of the vulnerability
 2. Steps to reproduce the issue
