@@ -1,10 +1,10 @@
 # Copilot Instructions — ContentTwin
 
-> **Note:** This file applies to the `petry-projects/ContentTwin` repository only. Org-wide rules are in [`petry-projects/.github/copilot-instructions.md`](https://github.com/petry-projects/.github/blob/main/.github/copilot-instructions.md). This file covers only what is specific to ContentTwin.
+> **Note:** This file applies to the `combsmith/ContentTwin` repository only. Org-wide rules are in [`combsmith/.github/copilot-instructions.md`](https://github.com/combsmith/.github/blob/main/.github/copilot-instructions.md). This file covers only what is specific to ContentTwin.
 
 ## About
 
-ContentTwin is a repository security and analysis settings automation tool — a collection of shell scripts that apply required GitHub repository configurations (secret scanning, push protection, rulesets) across the petry-projects org.
+ContentTwin is a repository security and analysis settings automation tool — a collection of shell scripts that apply required GitHub repository configurations (secret scanning, push protection, rulesets) across the combsmith org.
 
 ## Tech Stack
 
@@ -39,7 +39,7 @@ scripts/
 ## Required Environment Variables
 
 - `GITHUB_TOKEN`: GitHub PAT with `repo` administration scope (or `gh auth login` interactively)
-- `GITHUB_REPOSITORY`: Target repo in `owner/repo` format (defaults to `petry-projects/ContentTwin`)
+- `GITHUB_REPOSITORY`: Target repo in `owner/repo` format (defaults to `combsmith/ContentTwin`)
 
 ## Testing Framework
 
@@ -54,7 +54,7 @@ All scripts must follow shell safety standards: `#!/usr/bin/env bash` with `set 
 
 ## Org Standards
 
-See [petry-projects/.github — AGENTS.md](https://github.com/petry-projects/.github/blob/main/AGENTS.md) for org-wide development standards.
+See [combsmith/.github — AGENTS.md](https://github.com/combsmith/.github/blob/main/AGENTS.md) for org-wide development standards.
 
 **Language-specific instructions** (applied automatically by Copilot when you open matching file types):
 

@@ -10,7 +10,7 @@
 #
 # History: the canonical originally carried NO concurrency block, so issue #405
 # locked "no concurrency" here (removing the earlier drifting `#274` block). That
-# premise changed with petry-projects/.github#1126 (2026-09-16), which added a
+# premise changed with combsmith/.github#1126 (2026-09-16), which added a
 # central concurrency block that deduplicates ONLY the default-branch-context
 # triggers (check_suite / workflow_run) per PR while leaving PR-head triggers on a
 # unique-per-run group. Issue #457 re-synced this stub to that block, and this
@@ -38,7 +38,7 @@ setup() {
 
 @test "pr-auto-review carries the canonical top-level concurrency block (synced from standards, issue #1126/#457)" {
   # `concurrency:` is a centrally-owned surface for Tier-1 stubs
-  # (ci-standards.md#centralization-tiers). Since petry-projects/.github#1126 the
+  # (ci-standards.md#centralization-tiers). Since combsmith/.github#1126 the
   # canonical standards/workflows/pr-auto-review.yml carries a top-level block that
   # dedupes ONLY the default-branch-context triggers per PR: the `group` selects a
   # per-PR group for check_suite/workflow_run and a unique-per-run group otherwise,
@@ -59,7 +59,7 @@ def strip_expr(s):
         s = s[3:-2].strip()
     return ' '.join(s.split())
 
-# Canonical group expression from petry-projects/.github#1126
+# Canonical group expression from combsmith/.github#1126
 canonical_group = (
     \"(github.event_name == 'check_suite' && github.event.check_suite.pull_requests[0].number) \"
     \"&& format('pr-auto-review-ready-check-pr-{0}', github.event.check_suite.pull_requests[0].number) \"
@@ -137,7 +137,7 @@ import sys, yaml
 wf = yaml.safe_load(open(sys.argv[1]))
 job = wf['jobs']['pr-auto-review']
 uses = job.get('uses', '')
-expected = 'petry-projects/.github/.github/workflows/pr-auto-review-reusable.yml@'
+expected = 'combsmith/.github/.github/workflows/pr-auto-review-reusable.yml@'
 assert uses.startswith(expected), f'job must call the org reusable workflow, got: {uses!r}'
 print('ok')
 " "$WORKFLOW"

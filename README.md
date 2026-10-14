@@ -1,6 +1,6 @@
 # ContentTwin
 
-[![Contributing](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](https://github.com/petry-projects/.github/blob/main/CONTRIBUTING.md)
+[![Contributing](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](https://github.com/combsmith/.github/blob/main/CONTRIBUTING.md)
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL_3.0-blue.svg)](LICENSE)
 
 AI-powered Social Media Agent for small organizations — enterprise-quality social presence at non-profit pricing.
@@ -31,4 +31,4 @@ For commercial inquiries, email [support@combsmith.com](mailto:support@combsmith
 
 ## Contributing
 
-See the org-wide [Contributing Guide](https://github.com/petry-projects/.github/blob/main/CONTRIBUTING.md) and [SECURITY.md](SECURITY.md).
+See the org-wide [Contributing Guide](https://github.com/combsmith/.github/blob/main/CONTRIBUTING.md) and [SECURITY.md](SECURITY.md).

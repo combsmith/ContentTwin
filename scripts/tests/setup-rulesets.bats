@@ -4,7 +4,7 @@
 # converges each repo's live ruleset to the org standard. In particular the
 # `pr-quality` ruleset must set `dismiss_stale_reviews_on_push: true` and
 # `require_last_push_approval: true`, matching the codified source of truth
-# petry-projects/.github:standards/rulesets/pr-quality.json (compliance: issues #339, #388, and #418, drift
+# combsmith/.github:standards/rulesets/pr-quality.json (compliance: issues #339, #388, and #418, drift
 # finding ruleset-drift-pr-quality-dismiss_stale_reviews_on_push; issues #340
 # and #400, drift finding ruleset-drift-pr-quality-require_last_push_approval).
 #

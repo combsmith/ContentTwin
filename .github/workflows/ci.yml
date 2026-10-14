@@ -1,5 +1,5 @@
 # CI Pipeline
-# Standard: https://github.com/petry-projects/.github/blob/main/standards/ci-standards.md#1-ci-pipeline-ciyml
+# Standard: https://github.com/combsmith/.github/blob/main/standards/ci-standards.md#1-ci-pipeline-ciyml
 name: CI
 
 on:

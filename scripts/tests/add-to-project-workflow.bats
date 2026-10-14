@@ -73,7 +73,7 @@ import sys, yaml
 wf = yaml.safe_load(open(sys.argv[1])) or {}
 job = (wf.get('jobs') or {}).get('add-to-project') or {}
 uses = job.get('uses', '')
-expected = 'petry-projects/.github/.github/workflows/add-to-project-reusable.yml@add-to-project/v1-stable'
+expected = 'combsmith/.github/.github/workflows/add-to-project-reusable.yml@add-to-project/v1-stable'
 assert uses == expected, f'uses: must pin the v1-stable channel, got: {uses!r}'
 print('ok')
 " "$WORKFLOW"

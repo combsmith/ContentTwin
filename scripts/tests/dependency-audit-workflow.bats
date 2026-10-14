@@ -81,12 +81,12 @@ import sys, yaml
 wf = yaml.safe_load(open(sys.argv[1]))
 job = wf['jobs']['dependency-audit']
 uses = job.get('uses', '')
-expected = 'petry-projects/.github/.github/workflows/dependency-audit-reusable.yml@'
+expected = 'combsmith/.github/.github/workflows/dependency-audit-reusable.yml@'
 assert uses.startswith(expected), f'job must call the org reusable workflow, got: {uses!r}'
 print(uses)
 " "$WORKFLOW"
   [ "$status" -eq 0 ]
-  [[ "$output" == petry-projects/.github/.github/workflows/dependency-audit-reusable.yml@* ]]
+  [[ "$output" == combsmith/.github/.github/workflows/dependency-audit-reusable.yml@* ]]
 }
 
 @test "job name 'dependency-audit' is unchanged" {

@@ -4,7 +4,7 @@
 # that inflates the Fleet Monitor failure rate (issue #359). dev-lead.yml is a
 # VERBATIM caller stub: its behaviour lives in the org reusable
 # (dev-lead-reusable.yml), and its `on:`, `permissions:` and concurrency design
-# are NOT repo-adjustable (see the stub header and petry-projects/.github#402).
+# are NOT repo-adjustable (see the stub header and combsmith/.github#402).
 #
 # The failure/cancellation class the monitor flags is drift, not a repo bug:
 #   • trimming a trigger, or
@@ -78,7 +78,7 @@ print('ok')
 
 @test "dev-lead declares NO per-repo concurrency block (concurrency is centralised in the reusable)" {
   # Concurrency lives in dev-lead-reusable.yml with per-issue/per-PR lanes
-  # (petry-projects/.github#402) so issue pickups are never cancelled by PR
+  # (combsmith/.github#402) so issue pickups are never cancelled by PR
   # follow-up traffic. A per-repo concurrency block would drift the stub and
   # fight the centralised grouping — re-inflating the failure/cancellation rate.
   # This is the one point where dev-lead deliberately diverges from the
@@ -115,7 +115,7 @@ import sys, yaml
 wf = yaml.safe_load(open(sys.argv[1])) or {}
 job = (wf.get('jobs') or {}).get('dev-lead') or {}
 uses = job.get('uses', '')
-expected = 'petry-projects/.github-private/.github/workflows/dev-lead-reusable.yml@dev-lead/v139-stable'
+expected = 'combsmith/.github-private/.github/workflows/dev-lead-reusable.yml@dev-lead/v139-stable'
 assert uses == expected, f'uses: must pin the dev-lead/v139-stable channel, got: {uses!r}'
 print('ok')
 " "$WORKFLOW"
