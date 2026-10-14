@@ -6,10 +6,10 @@
 #   bash scripts/setup-rulesets.sh
 #
 # Requires: gh CLI with repository administration permissions
-# Standard: https://github.com/petry-projects/.github/blob/main/standards/github-settings.md
+# Standard: https://github.com/combsmith/.github/blob/main/standards/github-settings.md
 set -euo pipefail
 
-REPO="${GITHUB_REPOSITORY:-petry-projects/ContentTwin}"
+REPO="${GITHUB_REPOSITORY:-combsmith/ContentTwin}"
 
 echo "Applying rulesets for: $REPO"
 
@@ -22,7 +22,7 @@ echo "Applying rulesets for: $REPO"
 # GitHub App refuses to mint a token for PRs that touch workflow files, which
 # would deadlock every workflow-modifying PR. The Claude review check still runs
 # on all PRs for feedback, but must not be a merge gate.
-# See: petry-projects/.github:scripts/apply-rulesets.sh
+# See: combsmith/.github:scripts/apply-rulesets.sh
 
 RULESET_NAME="code-quality"
 
@@ -74,7 +74,7 @@ PAYLOAD='{
 # claude-code-action refuses to mint a token for PRs that touch workflow files,
 # which would deadlock every workflow-modifying PR. The check still runs for
 # review feedback on normal PRs but must not be a merge gate.
-# See: https://github.com/petry-projects/ContentTwin/issues/81
+# See: https://github.com/combsmith/ContentTwin/issues/81
 
 if [[ -n "$EXISTING_ID" ]]; then
   echo "  Updating existing '$RULESET_NAME' ruleset (id: $EXISTING_ID)..."
@@ -89,7 +89,7 @@ echo "Done. Ruleset '$RULESET_NAME' is active."
 # ── pr-quality ───────────────────────────────────────────────────────────────
 # Pull-request review requirements for the default branch. Mirrors the codified
 # org source of truth so `setup-rulesets.sh` converges this repo's live ruleset:
-#   petry-projects/.github:standards/rulesets/pr-quality.json
+#   combsmith/.github:standards/rulesets/pr-quality.json
 #   standards/github-settings.md#pr-quality--standard-ruleset-all-repositories
 #
 # dismiss_stale_reviews_on_push MUST be true: it re-requests review after any
@@ -146,7 +146,7 @@ PR_QUALITY_PAYLOAD='{
 # claude-code-action refuses to mint a token for PRs that touch workflow files,
 # which would deadlock every workflow-modifying PR. The check still runs for
 # review feedback on normal PRs but must not be a merge gate.
-# See: https://github.com/petry-projects/ContentTwin/issues/81
+# See: https://github.com/combsmith/ContentTwin/issues/81
 
 if [[ -n "$PR_QUALITY_EXISTING_ID" ]]; then
   echo "  Updating existing '$PR_QUALITY_NAME' ruleset (id: $PR_QUALITY_EXISTING_ID)..."
@@ -161,7 +161,7 @@ echo "Done. Ruleset '$PR_QUALITY_NAME' is active."
 # ── dependabot security updates ──────────────────────────────────────────────
 # Enables Dependabot security updates so GitHub automatically opens PRs to
 # fix known vulnerabilities in dependencies.
-# Standard: https://github.com/petry-projects/.github/blob/main/standards/push-protection.md#required-repo-level-settings
+# Standard: https://github.com/combsmith/.github/blob/main/standards/push-protection.md#required-repo-level-settings
 
 echo "Enabling Dependabot security updates for: $REPO"
 

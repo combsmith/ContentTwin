@@ -6,10 +6,10 @@
 #   bash scripts/apply-repo-settings.sh
 #
 # Requires: gh CLI with repository administration permissions
-# Standard: https://github.com/petry-projects/.github/blob/main/standards/push-protection.md#required-repo-level-settings
+# Standard: https://github.com/combsmith/.github/blob/main/standards/push-protection.md#required-repo-level-settings
 set -euo pipefail
 
-REPO="${GITHUB_REPOSITORY:-petry-projects/ContentTwin}"
+REPO="${GITHUB_REPOSITORY:-combsmith/ContentTwin}"
 
 # Honour GH_PAT early so every gh api call in this script uses it.
 if [ -n "${GH_PAT:-}" ]; then
@@ -33,8 +33,8 @@ echo "Applying security and analysis settings for: $REPO"
 # same omitted state as `null`.  The corresponding findings cannot clear from
 # this script alone; an org admin must enable GHAS at the org level before
 # these settings can take effect.
-# See: https://github.com/petry-projects/ContentTwin/issues/203 (secret_scanning_ai_detection)
-#      https://github.com/petry-projects/ContentTwin/issues/287 (secret_scanning_non_provider_patterns)
+# See: https://github.com/combsmith/ContentTwin/issues/203 (secret_scanning_ai_detection)
+#      https://github.com/combsmith/ContentTwin/issues/287 (secret_scanning_non_provider_patterns)
 
 gh api -X PATCH "repos/$REPO" --input - <<'JSON'
 {
@@ -102,7 +102,7 @@ check_setting "dependabot_security_updates"
 # create queued check suites on every push that are never completed, permanently
 # blocking auto-merge. Disabling them prevents GitHub from opening orphaned
 # check suites for these apps.
-# Standard: https://github.com/petry-projects/.github/blob/main/standards/github-settings.md
+# Standard: https://github.com/combsmith/.github/blob/main/standards/github-settings.md
 #
 # NOTE: This endpoint requires a GitHub App token or a fine-grained PAT with
 # Checks: write permission — classic PATs and OAuth app tokens are rejected.

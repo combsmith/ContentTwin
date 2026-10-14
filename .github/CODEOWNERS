@@ -1,6 +1,6 @@
-# CODEOWNERS — petry-projects standard (codeowners-standard.md)
+# CODEOWNERS — combsmith standard (codeowners-standard.md)
 #
-# Rule: @petry-projects/org-leads MUST be the FIRST owner on every line.
+# Rule: @combsmith/org-leads MUST be the FIRST owner on every line.
 # Additional teams may follow. Individual users are forbidden.
 
-* @petry-projects/org-leads
+* @combsmith/org-leads
