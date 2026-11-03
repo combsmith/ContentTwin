@@ -118,7 +118,16 @@ jobs:
         run: |
           permission=none
           if [[ "${AUTHOR}" =~ ^[A-Za-z0-9][A-Za-z0-9-]*$ ]]; then
-            permission=$(gh api "repos/${REPO}/collaborators/${AUTHOR}/permission" --jq '.permission')
+            if ! out=$(gh api "repos/${REPO}/collaborators/${AUTHOR}/permission" --jq '.permission' 2>&1); then
+              # 404 means the author is not a collaborator; any other error fails the job.
+              if [[ "${out}" == *"HTTP 404"* ]]; then
+                out=none
+              else
+                echo "${out}" >&2
+                exit 1
+              fi
+            fi
+            permission="${out}"
           fi
           case "${permission}" in
             admin | write) ;;
