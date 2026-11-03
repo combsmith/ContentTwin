@@ -35,13 +35,13 @@ print('ok')
   [[ "$output" == "ok" ]]
 }
 
-@test "redispatch bridge job declares empty permissions" {
+@test "redispatch bridge job grants only actions: write" {
   run python3 -c "
 import sys, yaml
 wf = yaml.safe_load(open(sys.argv[1])) or {}
 job = (wf.get('jobs') or {}).get('redispatch') or {}
 perms = job.get('permissions')
-assert perms == {}, f'redispatch permissions must be {{}}, got: {perms!r}'
+assert perms == {'actions': 'write'}, f'redispatch permissions must be only actions: write, got: {perms!r}'
 print('ok')
 " "$WORKFLOW"
   [ "$status" -eq 0 ]
