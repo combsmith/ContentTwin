@@ -12,7 +12,7 @@ set -euo pipefail
 REPO="${GITHUB_REPOSITORY:-combsmith/ContentTwin}"
 
 # Honour GH_PAT early so every gh api call in this script uses it.
-if [ -n "${GH_PAT:-}" ]; then
+if [[ -n "${GH_PAT:-}" ]]; then
   export GH_TOKEN="$GH_PAT"
 fi
 
@@ -56,7 +56,7 @@ check_setting() {
   local key="$1"
   local status
   status=$(echo "$RESULT" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('$key', {}).get('status', 'unknown'))")
-  if [ "$status" = "enabled" ]; then
+  if [[ "$status" == "enabled" ]]; then
     echo "  [OK] $key: enabled"
   else
     echo "  [WARN] $key: $status (expected: enabled)"
@@ -84,7 +84,7 @@ except Exception:
     print("unreadable")
 PY
   )
-  if [ "$setting" = "false" ]; then
+  if [[ "$setting" == "false" ]]; then
     echo "  [OK] check-suite preferences readable; auto-trigger for app 1236702 is disabled"
   else
     echo "  [WARN] check-suite preferences could not be read back (got: ${setting:-unreadable})"
