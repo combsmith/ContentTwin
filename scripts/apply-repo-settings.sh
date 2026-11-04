@@ -52,6 +52,7 @@ echo "Verifying applied settings..."
 
 RESULT=$(gh api "repos/$REPO" --jq '.security_and_analysis')
 
+# Check if a security setting is enabled and report its status.
 check_setting() {
   local key="$1"
   local status
