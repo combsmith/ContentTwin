@@ -35,13 +35,16 @@ print('ok')
   [[ "$output" == "ok" ]]
 }
 
-@test "redispatch bridge job declares empty permissions" {
+# The bridge re-invokes this workflow via `gh workflow run` with the job token,
+# which requires exactly `actions: write` (canonical template, synced in #503).
+@test "redispatch bridge job permissions match the canonical grant set" {
   run python3 -c "
 import sys, yaml
 wf = yaml.safe_load(open(sys.argv[1])) or {}
 job = (wf.get('jobs') or {}).get('redispatch') or {}
 perms = job.get('permissions')
-assert perms == {}, f'redispatch permissions must be {{}}, got: {perms!r}'
+expected = {'actions': 'write'}
+assert perms == expected, f'redispatch permissions drifted from canonical.\nexpected: {expected}\ngot:      {perms}'
 print('ok')
 " "$WORKFLOW"
   [ "$status" -eq 0 ]
