@@ -36,14 +36,15 @@ print('ok')
 }
 
 # The bridge re-invokes this workflow via `gh workflow run` with the job token,
-# which requires exactly `actions: write` (canonical template, synced in #503).
+# which requires `actions: write`, and links the run on the Idea, which requires
+# `discussions: write` (canonical template, combsmith/.github#1562).
 @test "redispatch bridge job permissions match the canonical grant set" {
   run python3 -c "
 import sys, yaml
 wf = yaml.safe_load(open(sys.argv[1])) or {}
 job = (wf.get('jobs') or {}).get('redispatch') or {}
 perms = job.get('permissions')
-expected = {'actions': 'write'}
+expected = {'actions': 'write', 'discussions': 'write'}
 assert perms == expected, f'redispatch permissions drifted from canonical.\nexpected: {expected}\ngot:      {perms}'
 print('ok')
 " "$WORKFLOW"
